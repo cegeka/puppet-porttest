@@ -40,7 +40,7 @@ define porttest::tcp (
   exec { "Test ${target} tcp ${port}":
     require => File["${prefix}/portTest.py"],
     path    => [ '/bin/', '/sbin/' , '/usr/bin/', '/usr/sbin/', '/usr/local/bin/' ],
-    command => "portTest.py ${target} ${port} tcp && touch ${store}/${target}-${port}.verified",
+    command => "portTest.py ${target} ${port} tcp 2 && touch ${store}/${target}-${port}.verified",
     creates => "${store}/${target}-${port}.verified",
   }
 }
