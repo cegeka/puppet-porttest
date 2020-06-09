@@ -7,7 +7,7 @@ import socket
 import time
 
 if len(sys.argv) < 5:
-    print "Syntax Error: " + sys.argv[0] + " [hostname] [port] [tcp or udp]"
+    print("Syntax Error: " + sys.argv[0] + " [hostname] [port] [tcp or udp]")
     sys.exit(1)
 
 host = sys.argv[1]
@@ -27,25 +27,25 @@ while 1 :
       s.sendto("--TEST LINE--", (host, port))
       recv, svr = s.recvfrom(255)
       s.shutdown(2)
-      print "Success connecting to " + host + " on UDP port: " + str(port)
+      print("Success connecting to " + host + " on UDP port: " + str(port))
       sys.exit(0)
     else:
       s.connect((host, port))
       s.shutdown(2)
-      print "Success connecting to " + host + " on TCP port: " + str(port)
+      print("Success connecting to " + host + " on TCP port: " + str(port))
       sys.exit(0)
   except Exception, e:
     try:
       errno, errtxt = e
     except ValueError:
-      print "Cannot connect to " + host + " on port: " + str(port)
+      print("Cannot connect to " + host + " on port: " + str(port))
       sys.exit(1)
     else:
       if errno == 107:
-        print "Success connecting to " + host + " on UDP port: " + str(port)
+        print("Success connecting to " + host + " on UDP port: " + str(port))
         sys.exit(0)
       else:
-        print "Cannot connect to " + host + " on port: " + str(port)
+        print("Cannot connect to " + host + " on port: " + str(port))
         #print e
         sys.exit(1)
 
