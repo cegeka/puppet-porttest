@@ -45,7 +45,7 @@ define porttest::udp (
   exec { "Test ${target} udp ${port}":
     require => File["${prefix}/portTest.py"],
     path    => [ '/bin/', '/sbin/' , '/usr/bin/', '/usr/sbin/', '/usr/local/bin/' ],
-    command => "portTest.py ${target} ${port} udp && touch ${store}/${target}-${port}.verified-udp",
+    command => "portTest.py ${target} ${port} 2 udp && touch ${store}/${target}-${port}.verified-udp",
     creates => "${store}/${target}-${port}.verified-udp",
   }
 }
