@@ -14,6 +14,7 @@
 ## Overview
 
 TCP and UDP port testing for Puppet.
+very definitely based upon https://github.com/BIAndrews/porttest
 
 ## Setup
 
