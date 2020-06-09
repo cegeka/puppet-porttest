@@ -6,7 +6,7 @@ import sys
 import socket
 import time
 
-if len(sys.argv) < 4:
+if len(sys.argv) < 5:
     print "Syntax Error: " + sys.argv[0] + " [hostname] [port] [tcp or udp]"
     sys.exit(1)
 
