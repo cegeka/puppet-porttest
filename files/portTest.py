@@ -1,5 +1,4 @@
 #!/usr/bin/python
-#
 
 # THIS FILE IS MANAGED BY PUPPET - DO NOT MANUALLY EDIT
 
@@ -7,12 +6,17 @@ import sys
 import socket
 import time
 
-if len(sys.argv) < 5:
+if len(sys.argv) < 3:
     print("Syntax Error: " + sys.argv[0] + " [hostname] [port] [tcp or udp]")
     sys.exit(1)
 
-host = sys.argv[1]
-port = int(sys.argv[2])
+
+target = sys.argv[1].split(":")
+host = target[0]
+port = int(target[1])
+
+#host = sys.argv[1]
+#port = int(sys.argv[2])
 # type => ["tcp" or "udp"]
 type = sys.argv[3].lower()
 
