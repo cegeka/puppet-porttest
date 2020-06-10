@@ -38,10 +38,14 @@ define porttest::tcp (
   $prefix = $porttest::install::prefix
   $store  = $porttest::install::store
 
-  exec { "Test ${target} tcp ${port}":
-    require => File["${prefix}/portTest.py"],
-    path    => [ '/bin/', '/sbin/' , '/usr/bin/', '/usr/sbin/', '/usr/local/bin/' ],
-    command => "portTest.py ${target} ${port} tcp ${timeout} && touch ${store}/${target}-${port}.verified",
-    creates => "${store}/${target}-${port}.verified",
+  $hosts = ['lafours', 'vmunixtraining01', 'vmunixtraining05']
+  $hosts.each |String $target| {
+
+    exec { "Test ${target} tcp ${port}":
+      require => File["${prefix}/portTest.py"],
+      path    => [ '/bin/', '/sbin/' , '/usr/bin/', '/usr/sbin/', '/usr/local/bin/' ],
+      command => "portTest.py ${target} ${port} tcp ${timeout} && touch ${store}/${target}-${port}.verified",
+      creates => "${store}/${target}-${port}.verified",
+    }
   }
 }
