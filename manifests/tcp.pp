@@ -37,8 +37,9 @@ define porttest::tcp (
   include porttest::install
   $prefix = $porttest::install::prefix
   $store  = $porttest::install::store
-
-  $hosts = ['lafours', 'vmunixtraining01', 'vmunixtraining05']
+  
+  #$hosts = [ 'google.com:80', 'google.co.uk:80' ]
+  $hosts = $target
   $hosts.each |String $target| {
 
     exec { "Test ${target} tcp ${port}":
@@ -47,5 +48,6 @@ define porttest::tcp (
       command => "portTest.py ${target} ${port} tcp ${timeout} && touch ${store}/${target}-${port}.verified",
       creates => "${store}/${target}-${port}.verified",
     }
+
   }
 }
