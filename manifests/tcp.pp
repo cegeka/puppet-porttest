@@ -5,21 +5,27 @@
 # === Parameters
 #
 # [*target*]
-#   Target IP or hostname.
+#   Target IP and hostname.
 #
-# [*port*]
-#   Port to test.
+# [*timeout*]
+#   seconds before giving up and returning a fail
 #
 # === Examples
+# porttest::tcp { 'test stuff ':
+#   target  => [ 'google.com:80', 'google.de:80' ],
+#   timeout => '5',
+# }
 #
 # porttest::tcp { 'test tcp 80 to google.com':
-#   target => 'google.com',
-#   port   => '80',    
+#   target =>  [ 'google.com:443' ],
+#   timeout   => '2',    
 # }
 #
 # === Authors
 #
-# Bryan Andrews <bryanandrews@gmail.com>
+# - Bryan Andrews <bryanandrews@gmail.com>
+# and
+# - Andy McDade
 #
 # === Copyright
 #
@@ -29,7 +35,6 @@
 define porttest::tcp (
 
   $target,
-  $port,
   $timeout,
 
 ) {
@@ -38,16 +43,13 @@ define porttest::tcp (
   $prefix = $porttest::install::prefix
   $store  = $porttest::install::store
   
-  #$hosts = [ 'google.com:80', 'google.co.uk:80' ]
   $hosts = $target
   $hosts.each |String $target| {
-
     exec { "Test ${target} tcp ${port}":
       require => File["${prefix}/portTest.py"],
       path    => [ '/bin/', '/sbin/' , '/usr/bin/', '/usr/sbin/', '/usr/local/bin/' ],
-      command => "portTest.py ${target} ${port} tcp ${timeout} && touch ${store}/${target}-${port}.verified",
+      command => "portTest.py ${target} ${timeout} && touch ${store}/${target}-${port}.verified",
       creates => "${store}/${target}-${port}.verified",
     }
-
   }
 }

@@ -7,18 +7,20 @@ import socket
 import time
 
 if len(sys.argv) < 3:
-    print("Syntax Error: " + sys.argv[0] + " [hostname] [port] [tcp or udp]")
+    print("Syntax Error: " + sys.argv[0] + " [hostname:port] [timeout]")
     sys.exit(1)
 
 
 target = sys.argv[1].split(":")
 host = target[0]
 port = int(target[1])
+timeout = int(sys.argv[2])
 
 #host = sys.argv[1]
 #port = int(sys.argv[2])
 # type => ["tcp" or "udp"]
-type = sys.argv[3].lower()
+#type = sys.argv[3].lower()
+type = 'tcp'
 
 
 while 1 :
@@ -26,7 +28,7 @@ while 1 :
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
   else:
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-  s.settimeout(5)
+  s.settimeout(timeout)
   try:
     if type == "udp":
       s.sendto("--TEST LINE--", (host, port))
