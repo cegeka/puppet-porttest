@@ -1,13 +1,13 @@
 {
   "name": "redlegoman-porttest",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "author": "redlegoman",
-  "summary": "TCP/UDP simple port tests",
+  "summary": "TCP simple port tests",
   "license": "Apache-2.0", 
   "source": "git@github.com:redlegoman/porttest.git",       
   "project_page": "https://github.com/redlegoman/porttest",       
   "issues_url": "https://github.com/redlegoman/porttest/issues",
-  "tags": ["port","test","porttest","tcp","udp"],
+  "tags": ["port","test","porttest","tcp"],
   "operatingsystem_support": [
     {
       "operatingsystem": "RedHat",
