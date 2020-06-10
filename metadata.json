@@ -1,6 +1,6 @@
 {
   "name": "redlegoman-porttest",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": "redlegoman",
   "summary": "TCP/UDP simple port tests",
   "license": "Apache-2.0", 
