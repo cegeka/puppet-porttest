@@ -41,7 +41,7 @@ class porttest (
     owner  => $owner,
     group  => $group,
     mode   => $mode,
-    source => 'puppet:///modules/porttest/portTest.py',
+    source => 'puppet:///modules/porttest/porttest.py',
   }
 
   file { $store:

@@ -51,8 +51,8 @@ define porttest::port(
 
     case $type {
       'python': {
-        $command = "portTest.py ${values[0]} ${values[1]} ${timeout} ${protocol} && touch ${store}/${verified}"
-        $require = File["${prefix}/portTest.py"]
+        $command = "porttest.py ${values[0]} ${values[1]} ${timeout} ${protocol} && touch ${store}/${verified}"
+        $require = File["${prefix}/porttest.py"]
       }
       'curl': {
         if ($protocol == 'tcp') {

@@ -13,7 +13,7 @@
 
 class porttest::params {
 
-  $prefix = '/usr/local/bin'
+  $prefix = '/usr/local/scripts'
   $store  = '/var/local/porttest'
   $owner  = 'root'
   $group  = 'root'
