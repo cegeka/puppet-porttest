@@ -37,7 +37,7 @@ class porttest (
   $mode   = $porttest::params::mode
 ) inherits porttest::params {
 
-  file { "${prefix}/portTest.py":
+  file { "${prefix}/porttest.py":
     owner  => $owner,
     group  => $group,
     mode   => $mode,
